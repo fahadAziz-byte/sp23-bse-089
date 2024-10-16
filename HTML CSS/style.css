@@ -1,0 +1,326 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+.body{
+    width: 100%;
+    height: 100%;
+}
+#header_div{
+    background-color: greenyellow;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+#header_col_1{
+    min-height: 50px;
+    width:25%;
+}
+#header_col_2{
+    min-height: 50px;
+    float: right;
+}
+#header_col_2 svg{
+    cursor: pointer;
+}
+#search-bar{
+    display: flex;
+}
+#search-bar a{
+    cursor: pointer;
+}
+#search-bar img{
+    margin-top: 25px;
+    margin-left: 50px;
+    width: 250px;
+    height: 50px;
+    overflow: hidden;
+}
+.search-container {
+    margin-left: 60px;
+    margin-top: 25px;
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.search-input {
+    width: 600px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.category-select {
+    width: 280px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+    background-color: #fff;
+}
+
+.search-btn {
+    padding: 10px 15px;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.search-btn:hover {
+    background-color: #0056b3;
+}
+
+.magnifying-glass {
+    font-size: 16px;
+}
+
+.parent-container {
+    margin-left: 50px;
+    display: flex;
+    width: 100%;
+    max-width: 1000px;
+    border: 1px solid black;
+    padding: 10px;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+}
+
+.dropdown-container {
+    width: 25%;
+}
+
+.category-dropdown {
+    background-color: greenyellow;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.button-container {
+    display: flex;
+    width: 80%; /* This leaves 50% width blank */
+    justify-content: space-around;
+}
+.button-container button{
+    margin-left: 100px;
+}
+
+
+.nav-button {
+    width: 25%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.nav-button:hover {
+    background-color: #0056b3;
+}
+
+.imgSlider{
+    width: 1680px;
+    height: 600px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 80px;
+    background-color: lightblue;
+    position: relative;
+}
+.imgSlider p{
+    position: absolute;
+    top: 50px;
+    left: 150px;
+    font-weight: bolder;
+    color: #fff; 
+    text-align:right;
+    font-size: 50px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+.imgSlider span{
+    background-color: rgb(169, 227, 24);
+}
+.wrapper{
+    width: 100%;
+    display: flex;
+    animation: slide ease 10s infinite;
+}
+@keyframes slide{
+    0%{
+        transform: translateX(0);
+    }
+    20%{
+        transform: translateX(-20%);
+    }
+    50%{
+        transform: translateX(-50%);
+    }
+    70%{
+        transform: translateX(-80%);
+    }
+    100%{
+        transform: translateX(0%);
+    }
+}
+.wrapper img{
+    width: 100%;
+}
+
+.navigation-manual {
+    position: absolute;
+    width: 100%;
+    bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.manual-btn {
+    border: 2px solid #40D3DC;
+    padding: 5px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.4s;
+    margin: 0 10px;
+}
+
+.manual-btn:hover {
+    background-color: #40D3DC;
+}
+#benchMark{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#featured{
+    margin: 10px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#whatsappBox{
+    display: flex;
+    justify-content: space-around;
+}
+#whatsappBox div{
+    padding: 20px;
+    max-width: 900px;
+    background-color: #E3F7EB;
+    border: 1px solid black;
+    text-align: center;
+}
+#whatsappBox svg{
+    margin: 10px;
+    cursor: pointer;
+}
+
+#imgRow1{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+#imgRow1 div{
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    overflow: hidden;
+    box-shadow: 10px 2px 4px lightgray;
+}
+#imgRow1 div:hover{
+    box-shadow: 10px 5px 5px lightblue;
+    cursor: pointer;
+}
+#imgRow1 img{
+    transition: transform 0.5s ease-in;
+}
+#imgRow1 img:hover{
+    transform: scale(1.05);
+}
+
+#imgRow2{
+    margin-top: 50px;
+    margin-bottom: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+#imgRow2 div{
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    overflow: hidden;
+    box-shadow: 10px 2px 2px lightgray;
+}
+#imgRow2 div:hover{
+    box-shadow: 10px 5px 5px lightblue;
+    cursor: pointer;
+}
+#imgRow2 img{
+    transition: transform 0.5s ease-in;
+}
+#imgRow2 img:hover{
+    transform: scale(1.05);
+}
+
+#banner{
+    display: flex;
+    justify-content: space-around;
+}
+.bannerContainer{
+    object-fit: contain;
+}
+
+#footer{
+    margin-top: 70px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+@media screen and (max-width: 700px){
+    
+    .button-container {
+        flex-direction: column;
+        overflow: hidden;
+        margin-bottom: 140px;
+    }
+    .search-container{
+        display: none;
+    }
+    .parent-container{
+        border: none;
+    }
+    .imgSlider{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 512px){
+    
+    .button-container{
+       display: none;
+       
+    }
+    #benchMark,#featured,#whatsappBox,#header_col_2 svg{
+        display: none;
+    }
+}
