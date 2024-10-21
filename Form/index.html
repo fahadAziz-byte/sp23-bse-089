@@ -4,40 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dream House Furniture</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="bootstrapStyle.css">
-
-    <style>
-        .carousel-inner > .item > img,
-        .carousel-inner > .item > a > img {
-        width: 100%;
-        height: 900px;
-        object-fit: cover;
-        }
-
-        
-        .carousel-caption {
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-        background-color: rgba(0, 0, 0, 0.5);
-        padding: 10px;
-        border-radius: 5px;
-        }
-
-        
-        .carousel-control.left, .carousel-control.right {
-        background-image: none;
-        }
-    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="style2.css">
 </head>
 <body>
     <header>
-        <div id="header_div" class="container-fluid bg-success text-light d-flex justify-content-between align-items-center p-2">
-            <div id="header_col_1" class="col-4">
+        <div id="header_div">
+            <div id="header_col_1">
                 Call Us : +92 3334567891
             </div>
-            <div id="header_col_2" class="col-4 d-flex justify-content-end">
+            <div id="header_col_2">
                 <svg id="fb-svg" xmlns="http://www.w3.org/2000/svg" width="50" height="40" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
                     <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/>
                 </svg>
@@ -46,7 +22,7 @@
                 </svg>
             </div>
         </div>
-        <div id="search-bar" class="d-flex justify-content-between align-items-center mt-4">
+        <div id="search-bar">
             <a href="#"><img id="dream-house-logo" src="/images/dream-house-logo.jpg" alt="logo"></a>
             <div class="search-container">
                 <input type="text" class="search-input" placeholder="Search for products">
@@ -77,52 +53,29 @@
             </div>
     
             <div class="button-container">
-                <button class="btn btn-primary mx-2">Home</button>
-                <button class="btn btn-primary mx-2">Compare</button>
-                <button class="btn btn-primary mx-2">Shop</button>
-                <button class="btn btn-primary mx-2">Wishlist</button>
+                <button class="nav-button">Home</button>
+                <button class="nav-button">Compare</button>
+                <button class="nav-button">Shop</button>
+                <button class="nav-button">Wishlist</button>
+                <button class="nav-button" style="background-color: red; color: whitesmoke;"><a href="/Form/form.html" style="margin: 0; padding: 0;">Check</a></button>
             </div>
         </div>
 
     </header>
 
-    <div class="container-fluid">
-        <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
-          <div class="carousel-inner">
-            <div class="item active">
-              <img src="/images/wing2.png" alt="Wing Image">
-              <div class="carousel-caption">
-                <h1 >Wing 2</h1>
-                <p >Find Your Perfect Sofa Today!</p>
-              </div>
-            </div>
-            <div class="item">
-              <img src="/images/imgSliderr1.jpg" alt="Slider Image 1">
-              <div class="carousel-caption">
-                <h3>Slider 1</h3>
-                <p>Get up to 50% OFF!</p>
-              </div>
-            </div>
-            <div class="item">
-              <img src="/images/pngwing.com.png" alt="Wing Image 2">
-              <div class="carousel-caption">
-                <h3>Wing 3</h3>
-                <p>Beautiful designs and great offers!</p>
-              </div>
-            </div>
+    <div class="imgSlider">
+        <div class="wrapper">
+            <img src="/images/wing2.png" alt="">
+            <img src="/images/imgSliderr1.jpg">
+            <img src="/images/pngwing.com.png">
         </div>
-          
-          
-          <a class="left carousel-control" href="#carouselExample" role="button" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="right carousel-control" href="#carouselExample" role="button" data-slide="next">
-            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
-        </div>
-      </div>
+        <p>
+            Find Your Perfect Sofa Today!<br>
+            <span>
+                Get<span style="color:#31ad39; text-shadow: 2px 2px 4px #000; font-weight: bolder;"> upto 50% OFF.</span>
+            </span>
+        </p>
+    </div>
 
     <div id="benchMark">
         <img src="/images/BenchMark.jpg" alt="benchMark">
@@ -147,48 +100,48 @@
         
     </div>
 
-    <div id="imgRow1" class="row my-4">
-        <div class="col-md-3">
+    <div id="imgRow1">
+        <div class="col">
             <img src="/images/chairs.jpg" alt="chairs">
             <h1>Chairs</h1>
             <p>|  5.00 $  |</p>
         </div>
-        <div class="col-md-3">
+        <div class="col">
             <img src="/images/diningTable.jpg" alt="Dining Table">
             <h1>Dining Table</h1>
             <p>|  35.00 $  |</p>
         </div>
 
-        <div class="col-md-3">
+        <div class="col">
             <img src="/images/Cab&Draw.jpg" alt="Cabenet and Draws">
             <h1>Cabenent & Draw</h1>
             <p>|  20.00 $  |</p>
         </div>
-        <div class="col-md-3">
+        <div class="col">
             <img src="/images/gardenFurniture.jpg" alt="Garden Furniture">
             <h1>Garden Furniture</h1>
             <p>|  15.00 $  |</p>
         </div>
     </div>
     
-    <div id="imgRow2" class="row my-4">
-        <div class="col-md-3">
+    <div id="imgRow2">
+        <div class="col">
             <img src="/images/bedroom.jpg" alt="chairs">
             <h1>Bedroom</h1>
             <p>|  45.00 $  |</p>
         </div>
-        <div class="col-md-3">
+        <div class="col">
             <img src="/images/officeFurniture.jpg" alt="Dining Table">
             <h1>Office Furniture</h1>
             <p>|  35.00 $  |</p>
         </div>
 
-        <div class="col-md-3">
+        <div class="col">
             <img src="/images/sofas.jpg" alt="Cabenet and Draws">
             <h1>Office</h1>
             <p>|  15.00 $  |</p>
         </div>
-        <div class="col-md-3">
+        <div class="col">
             <img src="/images/centerTables.jpg" alt="Garden Furniture">
             <h1>Center Tables</h1>
             <p>|  25.00 $  |</p>
