@@ -1,12 +1,8 @@
-*{
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
-}
-.body{
-    width: 100%;
+body, html {
+    margin: 0;
+    padding: 0;
     height: 100%;
-}
+  }
 #header_div{
     background-color: greenyellow;
     display: flex;
