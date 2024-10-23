@@ -1,4 +1,5 @@
 // Create and inject necessary styles
+
 const injectStyles = () => {
     const style = document.createElement('style');
     style.textContent = `
