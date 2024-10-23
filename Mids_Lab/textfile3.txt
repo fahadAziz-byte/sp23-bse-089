@@ -1,0 +1,20 @@
+The Tower of Hanoi implementation is an educational game that demonstrates recursive problem-solving. Features include:
+
+• Interactive drag-and-drop interface
+• Multiple difficulty levels (3 to 8 disks)
+• Move counter and timer
+• Solution visualization
+• Step-by-step tutorial mode
+• Achievement system
+• Performance tracking and statistics
+
+Technical Specifications:
+- Built with JavaScript and HTML5 Canvas
+- CSS animations for smooth disk movements
+- Recursive algorithm for solution calculation
+- Local storage for saving progress and scores
+- Responsive design for mobile play
+- Sound effects and background music
+- Achievement system with unlockable challenges
+
+The game serves as both an entertaining puzzle and an educational tool for understanding recursion. The step-by-step tutorial mode helps users grasp the concept of solving complex problems by breaking them down into smaller, manageable steps.
