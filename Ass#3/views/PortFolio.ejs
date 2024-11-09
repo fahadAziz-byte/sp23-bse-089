@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semester Wise Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/portfolioStyle.css">
+</head>
+<body>
+    <header class="header">
+        <h1>Semester Wise Portfolio</h1>
+        <p>A showcase of my projects through different semester</p>
+    </header>
+
+    <div class="container">
+        <section class="semester">
+            <h2 class="semester-title">Semester 1</h2>
+            <div class="project-card">
+                <h3 class="project-title">Football Score Manager</h3>
+                <p class="project-summary">A comprehensive game management system designed to handle multiple games, players, and scores efficiently.</p>
+                <img src="/images/Game_Manager.png" alt="Game Manager Screenshot" class="project-image">
+                <button class="show-description-btn" onclick="loadDescription('textfile1.txt', this)">
+                    <span>Show Description</span>
+                    <div class="loading-spinner"></div>
+                    <i class="fas fa-chevron-down btn-icon"></i>
+                </button>
+                <div class="description-container"></div>
+            </div>
+        </section>
+
+        <section class="semester">
+            <h2 class="semester-title">Semester 2</h2>
+            <div class="project-card">
+                <h3 class="project-title">Hostel Management System</h3>
+                <p class="project-summary">A robust system for managing hostel operations, including room allocation, student records, and facility management.</p>
+                <img src="/images/hostels-pms.jpg" alt="Hostel Management System Screenshot" class="project-image">
+                <button class="show-description-btn" onclick="loadDescription('textfile2.txt', this)">
+                    <span>Show Description</span>
+                    <div class="loading-spinner"></div>
+                    <i class="fas fa-chevron-down btn-icon"></i>
+                </button>
+                <div class="description-container"></div>
+            </div>
+        </section>
+
+        <section class="semester">
+            <h2 class="semester-title">Semester 3</h2>
+            <div class="project-card">
+                <h3 class="project-title">Tower of Hanoi</h3>
+                <p class="project-summary">An interactive implementation of the classic Tower of Hanoi puzzle game with visual animations and difficulty levels.</p>
+                <img src="/images/The-Tower-of-Hanoi-task.png" alt="Tower of Hanoi Screenshot" class="project-image">
+                <button class="show-description-btn" onclick="loadDescription('textfile3.txt', this)">
+                    <span>Show Description</span>
+                    <div class="loading-spinner"></div>
+                    <i class="fas fa-chevron-down btn-icon"></i>
+                </button>
+                <div class="description-container"></div>
+            </div>
+        </section>
+    </div>
+
+    <script src="/js/script.js"></script>
+</body>
+</html>
