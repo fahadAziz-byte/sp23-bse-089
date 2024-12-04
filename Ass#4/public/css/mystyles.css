@@ -1,0 +1,11 @@
+/* My styles css file for B Section */
+
+h1{
+    padding: 5px;
+    border-radius: 5px;
+    background-color: darkseagreen;
+}
+
+#menu li{
+    display: inline;
+}

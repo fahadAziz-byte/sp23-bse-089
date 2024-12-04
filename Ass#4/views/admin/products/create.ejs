@@ -26,7 +26,11 @@
     <div class="form-container">
         <h3 class="text-center mb-4">Product Form</h3>
         <form action="/products/save" method="POST">
-           
+            <!-- ID Field -->
+            <div class="mb-3">
+                <label for="id" class="form-label">Product ID</label>
+                <input type="number" class="form-control" id="id" name="id" placeholder="Enter Product ID" required>
+            </div>
 
             <!-- Title Field -->
             <div class="mb-3">
@@ -48,15 +52,23 @@
 
             <!-- Action Buttons -->
             <div class="d-flex justify-content-end">
-                <a href="/products/save"><button type="submit" class="btn btn-success btn-space">Save</button></a>
-                <a href=""></a><button type="button" class="btn btn-primary btn-space" >Edit</button></a>
-                <a href=""></a><button type="button" class="btn btn-danger" >Delete</button></a>
+                <button type="submit" class="btn btn-success btn-space">Save</button>
+                <button type="button" class="btn btn-primary btn-space" onclick="editProduct()">Edit</button>
+                <button type="button" class="btn btn-danger" onclick="deleteProduct()">Delete</button>
             </div>
         </form>
     </div>
 </div>
 
+<script>
+    function editProduct() {
+        alert("Edit functionality here");
+    }
 
+    function deleteProduct() {
+        alert("Delete functionality here");
+    }
+</script>
 
 </body>
 </html>

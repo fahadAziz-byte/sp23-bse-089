@@ -149,9 +149,13 @@ body, html {
     background-color: rgb(169, 227, 24);
 }
 .wrapper{
+    width: 100%;
     display: flex;
 }
 
+.wrapper img{
+    width: 100%;
+}
 
 .navigation-manual {
     position: absolute;
