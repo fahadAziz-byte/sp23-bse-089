@@ -7,7 +7,7 @@ server.use(expressLayouts);
 server.use(express.static("public"));
 
 let adminProductsRouter = require("./routes/admin/products.controller");
-server.use(adminProductsRouter);
+server.use('/admin',adminProductsRouter);
 
 
 server.get("/about-me", (req, res) => {
