@@ -1,0 +1,29 @@
+<h4>Create Product</h4>
+<p>If we do not give action attribute then the form is submitted to the url on which it was rendered</p>
+
+<form action="" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="titleInput">Title</label>
+        <input name="title" type="text" class="form-control" id="titleInput" aria-describedby="emailHelp" placeholder="Enter Title" value="IPhone" />
+        <small id="emailHelp" class="form-text text-muted">Product Title</small>
+      </div>
+      <div class="form-group">
+        <label for="descriptionInput">Description</label>
+        <textarea name="description" type="text" class="form-control" id="descriptionInput" aria-describedby="emailHelp" placeholder="Enter Description">IPhone is Awesome </textarea>
+        <small id="emailHelp" class="form-text text-muted">Product Details</small>
+      </div>
+      <div class="form-group">
+        <label for="priceInput">Price</label>
+        <input name="price" type="text" class="form-control" id="priceInput" aria-describedby="emailHelp" placeholder="Enter Price" value="8000">
+        <small id="emailHelp" class="form-text text-muted">Product Price in PKR</small>
+      </div>
+      <div class="form-group">
+        <label for="titleInput">Picture</label>
+        <input name="file" type="file" class="form-control" id="titleInput" aria-describedby="emailHelp" placeholder="Enter Title" value="IPhone" />
+        <small id="emailHelp" class="form-text text-muted">Upload Product Picture</small>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-info">Create New Product</button>
+      </div>
+
+</form>

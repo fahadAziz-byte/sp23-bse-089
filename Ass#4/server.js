@@ -1,5 +1,4 @@
 const express = require("express");
-const fs=require('fs');
 var expressLayouts = require("express-ejs-layouts");
 let server = express();
 server.set("view engine", "ejs");
