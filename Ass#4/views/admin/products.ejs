@@ -1,6 +1,19 @@
 <h3><%-pageTitle  %></h3>
 
 <a href="/admin/products/create" class="btn btn-info">Create New Product</a>
+ <div>
+     Page <%= page %> of <%= totalPages %>
+ </div>
+ <nav aria-label="Page navigation example">
+    <ul class="pagination">
+        <li class="page-item <%= page==1? "disabled ":" " %>"><a class="page-link" href="/admin/products/<%= Number(page)-1 %>">Previous</a></li>
+        <% for( let index = 1; index <= totalPages; index++ ) { %>
+        <li class="page-item"><a class="page-link" href="/admin/products/<%= index %>"><%= index %></a></li>
+      <% } %>
+
+      <li class="page-item <%= page==totalPages?"disabled":"" %> "><a class="page-link" href="/admin/products/<%= Number(page)+1 %>">Next</a></li>
+    </ul>
+  </nav>    
 <table class="table">
     <thead>
         <tr>
@@ -8,6 +21,7 @@
             <th>Title</th>
             <th>Price</th>
             <th>Description</th>
+            <th>Picture</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -18,9 +32,10 @@
                 <td><%= products[index].title %></td>
                 <td><%= products[index].price %></td>
                 <td><%= products[index].description %></td>
+                <td><img src="/<%= products[index].picture %>" width="100px"/></td>
                 <td>
-                    <a href="/admin/products/edit" class="btn btn-warning">Edit</a>
-                    <a href="/admin/products/delete" class="btn btn-danger">Delete</a>
+                    <a href="/admin/products/edit/<%= products[index]._id %>" class="btn btn-warning">Edit</a>
+                    <a href="/admin/products/delete/<%= products[index]._id %>" class="btn btn-danger">Delete</a>
                 </td>
             </tr>
         <% } %>

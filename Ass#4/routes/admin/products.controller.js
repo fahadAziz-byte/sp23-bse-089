@@ -1,6 +1,7 @@
 const express = require("express");
 let router = express.Router();
 let multer = require("multer");
+router.use(express.urlencoded({extended:true}))
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "./uploads"); // Directory to store files
@@ -10,22 +11,21 @@ const storage = multer.diskStorage({
   },
 });
 const upload = multer({ storage: storage });
-let Product = require("../../models/product.model");
+let Product = require("../../model/productModel");
+
+
 
 // route to handle Delete of product
 router.get("/products/delete/:id", async (req, res) => {
-  let params = req.params;
-  let product = await Product.findByIdAndDelete(req.params.id);
-  // let query = req.query;
-  // return res.send({ query, params });
-  // return res.send(product);
-  return res.redirect("/products");
+  await Product.findByIdAndDelete(req.params.id);
+  return res.redirect("/admin/products");
 });
+
 
 //route to render edit product form
 router.get("/products/edit/:id", async (req, res) => {
   let product = await Product.findById(req.params.id);
-  return res.render("admin/product-edit-form", {
+  return res.render("admin/products/product-edit-form.ejs", {
     layout: "adminlayout",
     product,
   });
@@ -36,12 +36,12 @@ router.post("/products/edit/:id", async (req, res) => {
   product.description = req.body.description;
   product.price = req.body.price;
   await product.save();
-  return res.redirect("/products");
+  return res.redirect("/admin/products");
 });
 
 // route to render create product form
 router.get("/products/create", (req, res) => {
-  return res.render("admin/product-form", { layout: "adminlayout" });
+  return res.render("admin/products/product-form", { layout: "adminlayout" });
 });
 
 //route to handle create product form submission
@@ -50,15 +50,14 @@ router.post(
   "/products/create",
   upload.single("file"),
   async (req, res) => {
-    // return res.send(req.file);
     let data = req.body;
     let newProduct = new Product(data);
-    newProduct.title = data.title;
+    console.log(req.file);
     if (req.file) {
       newProduct.picture = req.file.filename;
     }
     await newProduct.save();
-    return res.redirect("/products");
+    return res.redirect("/admin/products");
     // we will send data to model to save in db
 
     // return res.send(newProduct);
