@@ -4,6 +4,7 @@ const mongoose=require('mongoose');
 let cookieParser = require("cookie-parser");
 let session = require("express-session");
 let User=require('./model/User')
+let Product=require('./model/productModel');
 let server = express();
 server.use(express.urlencoded({extended:true}));
 server.set("view engine", "ejs");
@@ -47,12 +48,19 @@ server.post("/register", async (req, res) => {
 
 
 server.get("/about-me", (req, res) => {
-  return res.render("about-me");
+  return res.render("Portfolio.ejs");
 });
 
 server.get("/", (req, res) =>{
-  res.render("HomePage.ejs");
+  let user=req.session.user;
+  res.render("HomePage.ejs",{ user });
 });
+
+server.get('/shop',async(req,res)=>{
+  let user=req.session.user;
+  let products=await Product.find();
+  res.render("shop.ejs",{ user,products });
+})
 
 
 

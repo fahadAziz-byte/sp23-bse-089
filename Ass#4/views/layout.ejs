@@ -9,11 +9,10 @@
     <%-defineContent("styles-area") %>
 </head>
 <body>
-    <%- include('partials/top-menu') %>
+    <%- include('./partials/top-menu.ejs') %>
     <hr>
     <%-body  %>
     <hr>
-    <h5>Footer</h5>
-    <%-defineContent("footer-area") %>
+    <%- include('./partials/footer.ejs') %>
 </body>
 </html>
