@@ -14,7 +14,7 @@
             <div class="slide" style="background-image: url('/images/ImageSlider1.jpg'); background-color:khaki;">
                 <div class="slide-content">
                     <h2>Modern Comfort for Your Home</h2>
-                    <a href="#" class="slide-button">Explore Now</a>
+                    <a href="/shop" class="slide-button">Explore Now</a>
                 </div>
             </div>
         </section>
@@ -57,23 +57,47 @@
                     <div class="product-item">
                         <img src="/images/centerTables.jpg" alt="Cozy Sofa">
                         <h3>Center table</h3>
-                        <p class="price">$599.99</p>
+                        <p class="price">Rs. 59999</p>
+                        <a href="/shop">
+                            <button type="button" class="btn btn-success">Check Out</button>
+                        </a>
                     </div>
                     <div class="product-item">
                         <img src="/images/gardenFurniture.jpg" alt="Elegant Chair">
                         <h3>Elegant Chair</h3>
-                        <p class="price">$199.99</p>
+                        <p class="price">Rs. 19999</p>
+                        <a href="/shop">
+                            <button type="button" class="btn btn-success">Check Out</button>
+                        </a>
                     </div>
                     <div class="product-item">
                         <img src="/images/officeFurniture.jpg" alt="Modern Table">
                         <h3>Office Furniture</h3>
-                        <p class="price">$349.99</p>
+                        <p class="price">Rs. 39499</p>
+                        <a href="/shop">
+                            <button type="button" class="btn btn-success">Check Out</button>
+                        </a>
                     </div>
                     <div class="product-item">
                         <img src="/images/bedroom.jpg" alt="Luxurious Bed">
                         <h3>Luxurious Bed</h3>
-                        <p class="price">$799.99</p>
+                        <p class="price">Rs. 79999</p>
+                        <a href="/shop">
+                            <button type="button" class="btn btn-success">Check Out</button>
+                        </a>
                     </div>
+                    <% if(products){
+                        products.forEach((product)=>{ %>
+                            <div class="product-item">
+                                <img src="<%=product.picture%>" alt="<%=product.title%>">
+                                <h3><%=product.title%></h3>
+                                <p class="price">Rs. <%=product.price%></p>
+                                <a href="/shop">
+                                    <button type="button" class="btn btn-success">Check Out</button>
+                                </a>
+                            </div>
+                        <%})
+                    }%>
                 </div>
             </div>
         </section>

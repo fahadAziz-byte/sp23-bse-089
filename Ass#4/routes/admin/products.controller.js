@@ -52,16 +52,11 @@ router.post(
   async (req, res) => {
     let data = req.body;
     let newProduct = new Product(data);
-    console.log(req.file);
     if (req.file) {
       newProduct.picture = req.file.filename;
     }
     await newProduct.save();
     return res.redirect("/admin/products");
-    // we will send data to model to save in db
-
-    // return res.send(newProduct);
-    // return res.render("admin/product-form", { layout: "adminlayout" });
   }
 );
 

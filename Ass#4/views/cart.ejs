@@ -116,34 +116,7 @@
 <body>
 
     <main class="container shop-container">
-        <aside class="sidebar">
-            <h3>Filter Products</h3>
-            <div class="filter-group">
-                <h4>Categories</h4>
-                <label><input type="checkbox"> Sofas</label>
-                <label><input type="checkbox"> Chairs</label>
-                <label><input type="checkbox"> Tables</label>
-                <label><input type="checkbox"> Beds</label>
-            </div>
-            <div class="filter-group">
-                <h4>Price Range</h4>
-                <form id="priceFilterForm" method="POST" action="/filterProducts">
-                    <label>
-                        <input type="checkbox" name="priceRange" value="0-10000"> Rs.0 - Rs.10000
-                    </label>
-                    <label>
-                        <input type="checkbox" name="priceRange" value="10001-50000"> Rs.10001 - Rs.50000
-                    </label>
-                    <label>
-                        <input type="checkbox" name="priceRange" value="50001-100000"> Rs.50001 - Rs.100000
-                    </label>
-                    <label>
-                        <input type="checkbox" name="priceRange" value="100000+"> Rs.100000+
-                    </label>
-                    <button type="submit" class="btn btn-primary">Apply Filter</button>
-                </form>
-            </div>            
-        </aside>
+        
 
         <div class="products-grid">
             <% if (!(products.length===0)) { %>
@@ -154,8 +127,8 @@
                             <h2 class="product-title"><%= product.title %></h2>
                             <p class="product-description"><%= product.description %></p>
                             <p class="product-price">Rs. <%= product.price.toFixed(2) %></p>
-                            <a href="/add-to-cart/<%= product._id %>">
-                                <button type="button" class="btn btn-success">Add to Cart</button>
+                            <a href="/delete_cart_item/<%=product._id %>">
+                                <button type="button" class="btn btn-danger">Remove from Cart</button>
                             </a>
                         </div>
                     </div>
