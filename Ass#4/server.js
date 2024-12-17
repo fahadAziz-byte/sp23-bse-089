@@ -5,6 +5,7 @@ let cookieParser = require("cookie-parser");
 let session = require("express-session");
 let User=require('./model/User')
 let Product=require('./model/productModel');
+let Category=require('./model/categoryModel');
 let server = express();
 server.set("view engine", "ejs");
 server.use(expressLayouts);
@@ -51,6 +52,8 @@ server.post("/register", async (req, res) => {
 });
 
 
+
+
 server.get("/about-me", (req, res) => {
   return res.render("Portfolio.ejs");
 });
@@ -64,7 +67,8 @@ server.get("/", async(req, res) =>{
 server.get('/shop',async(req,res)=>{
   let user=req.session.user;
   let products=await Product.find();
-  res.render("shop.ejs",{ user,products });
+  let categories=await Category.find();
+  res.render("shop.ejs",{ user,products,categories });
 })
 
 server.post('/searchProduct',async(req,res)=>{
@@ -115,6 +119,13 @@ server.post('/filterProducts', async (req, res) => {
       return res.status(500).send('An error occurred while filtering products');
   }
 });
+
+server.post('/filterCategory',async(req,res)=>{
+  let categoryName=req.body.name;
+  let categories=await Category.find();
+  let filteredProducts=await Product.find({category: categoryName});
+  return res.render('shop', { products: filteredProducts, categories });
+})
 
 server.get("/cart", async (req, res) => {
   let user=req.session.user;

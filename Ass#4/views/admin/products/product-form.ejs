@@ -1,29 +1,41 @@
-<h4>Create Product</h4>
-<p>If we do not give action attribute then the form is submitted to the url on which it was rendered</p>
 
 <form action="" method="post" enctype="multipart/form-data">
     <div class="form-group">
         <label for="titleInput">Title</label>
-        <input name="title" type="text" class="form-control" id="titleInput" aria-describedby="emailHelp" placeholder="Enter Title"  />
-        <small id="emailHelp" class="form-text text-muted">Product Title</small>
-      </div>
-      <div class="form-group">
+        <input name="title" type="text" class="form-control" id="titleInput" aria-describedby="titleHelp" placeholder="Enter Title" />
+        <small id="titleHelp" class="form-text text-muted">Product Title</small>
+    </div>
+    
+    <div class="form-group">
         <label for="descriptionInput">Description</label>
-        <textarea name="description" type="text" class="form-control" id="descriptionInput" aria-describedby="emailHelp" placeholder="Enter Description"> </textarea>
-        <small id="emailHelp" class="form-text text-muted">Product Details</small>
-      </div>
-      <div class="form-group">
+        <textarea name="description" class="form-control" id="descriptionInput" aria-describedby="descriptionHelp" placeholder="Enter Description"></textarea>
+        <small id="descriptionHelp" class="form-text text-muted">Product Details</small>
+    </div>
+    
+    <div class="form-group">
         <label for="priceInput">Price</label>
-        <input name="price" type="text" class="form-control" id="priceInput" aria-describedby="emailHelp" placeholder="Enter Price">
-        <small id="emailHelp" class="form-text text-muted">Product Price in PKR</small>
-      </div>
-      <div class="form-group">
-        <label for="titleInput">Picture</label>
-        <input name="file" type="file" class="form-control" id="titleInput" aria-describedby="emailHelp" placeholder="Enter Title"  />
-        <small id="emailHelp" class="form-text text-muted">Upload Product Picture</small>
-      </div>
-      <div class="form-group">
-        <button class="btn btn-info">Create New Product</button>
-      </div>
+        <input name="price" type="text" class="form-control" id="priceInput" aria-describedby="priceHelp" placeholder="Enter Price">
+        <small id="priceHelp" class="form-text text-muted">Product Price in PKR</small>
+    </div>
 
+    <div class="form-group">
+        <label for="categoryInput">Category</label>
+        <select name="category" class="form-control" id="categoryInput" required>
+            <option value="" disabled selected>Select a Category</option>
+            <% categories.forEach((category)=>{ %>
+              <option value="<%= category.name%>"><%= category.name%></option>
+            <% }) %>
+        </select>
+        <small id="categoryHelp" class="form-text text-muted">Select a product category</small>
+    </div>
+    
+    <div class="form-group">
+        <label for="pictureInput">Picture</label>
+        <input name="file" type="file" class="form-control" id="pictureInput" aria-describedby="pictureHelp" />
+        <small id="pictureHelp" class="form-text text-muted">Upload Product Picture</small>
+    </div>
+    
+    <div class="form-group">
+        <button class="btn btn-info" type="submit">Create New Product</button>
+    </div>
 </form>

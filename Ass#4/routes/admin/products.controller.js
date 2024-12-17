@@ -12,6 +12,7 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage: storage });
 let Product = require("../../model/productModel");
+const Category = require("../../model/categoryModel");
 
 
 
@@ -40,8 +41,9 @@ router.post("/products/edit/:id", async (req, res) => {
 });
 
 // route to render create product form
-router.get("/products/create", (req, res) => {
-  return res.render("admin/products/product-form", { layout: "adminlayout" });
+router.get("/products/create", async(req, res) => {
+  let categories=await Category.find();
+  return res.render("admin/products/product-form", { layout: "adminlayout",categories });
 });
 
 //route to handle create product form submission
@@ -59,6 +61,39 @@ router.post(
     return res.redirect("/admin/products");
   }
 );
+
+router.get('/category',async(req,res)=>{
+  let categories=await Category.find();
+
+  res.render("admin/category/category", {
+    layout: "adminlayout",
+    categories,
+  });
+});
+
+router.get("/categories/new",async(req,res)=>{
+  res.render("admin/category/category-new-form", {
+    layout: "adminlayout"
+  })
+})
+
+router.post("/categories/new",async(req,res)=>{
+  let data = req.body;
+  let doesCategoryExist=await Category.findOne({name : data.name});
+  if(doesCategoryExist){
+    return res.render("admin/category/category-new-form", {
+      layout: "adminlayout"
+      ,message:'Category Already Exist'
+    })
+  }
+  let newCategory=new Category(data);
+  await newCategory.save();
+  res.redirect('/admin/category');
+})
+
+
+
+
 
 router.get("/products/:page?", async (req, res) => {
   let page = req.params.page;

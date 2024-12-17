@@ -120,10 +120,22 @@
             <h3>Filter Products</h3>
             <div class="filter-group">
                 <h4>Categories</h4>
-                <label><input type="checkbox"> Sofas</label>
-                <label><input type="checkbox"> Chairs</label>
-                <label><input type="checkbox"> Tables</label>
-                <label><input type="checkbox"> Beds</label>
+                <form id="priceFilterForm" method="POST" action="/filterCategory">
+                    <% if (!categories) { %>
+                        <p>Error: Categories not defined.</p>
+                    <% } else { %>
+                        <% categories.forEach((category) => { %>
+                            <label>
+                                <input type="checkbox" name="name" value="<%= category.name %>">
+                                <%= category.name %>
+                            </label>
+                        <% }); %>
+                    <% } %>
+                    
+                    
+                    
+                    <button type="submit" class="btn btn-primary">Apply Filter</button>
+                </form>
             </div>
             <div class="filter-group">
                 <h4>Price Range</h4>

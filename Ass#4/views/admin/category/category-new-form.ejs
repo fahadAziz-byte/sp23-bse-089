@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Category</title>
+</head>
+<body>
+    <h1>Create New Category</h1>
+    <form action="/admin/categories/new" method="POST">
+        <% if(locals.message){ %>
+            <p>Such Category already exists!</p>
+        <% } %>
+        <div>
+            <label for="name">Category Name:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div>
+            <label for="description">Description:</label>
+            <textarea name="description" class="form-control" id="descriptionInput" aria-describedby="descriptionHelp" placeholder="Enter Description" required></textarea>
+        </div>
+        <button type="submit">Create Category</button>
+    </form>
+    <a href="/admin/category">Back to Categories</a>
+</body>
+</html>
