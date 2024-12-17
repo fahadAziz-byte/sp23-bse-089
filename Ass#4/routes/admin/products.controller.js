@@ -1,6 +1,8 @@
 const express = require("express");
 let router = express.Router();
 let multer = require("multer");
+let Product = require("../../model/productModel");
+const Category = require("../../model/categoryModel");
 router.use(express.urlencoded({extended:true}))
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -11,8 +13,6 @@ const storage = multer.diskStorage({
   },
 });
 const upload = multer({ storage: storage });
-let Product = require("../../model/productModel");
-const Category = require("../../model/categoryModel");
 
 
 
@@ -26,15 +26,18 @@ router.get("/products/delete/:id", async (req, res) => {
 //route to render edit product form
 router.get("/products/edit/:id", async (req, res) => {
   let product = await Product.findById(req.params.id);
+  let categories=await Category.find();
   return res.render("admin/products/product-edit-form.ejs", {
     layout: "adminlayout",
     product,
+    categories
   });
 });
 router.post("/products/edit/:id", async (req, res) => {
   let product = await Product.findById(req.params.id);
   product.title = req.body.title;
   product.description = req.body.description;
+  product.category=req.body.category;
   product.price = req.body.price;
   await product.save();
   return res.redirect("/admin/products");

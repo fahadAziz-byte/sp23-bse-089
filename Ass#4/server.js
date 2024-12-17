@@ -6,6 +6,7 @@ let session = require("express-session");
 let User=require('./model/User')
 let Product=require('./model/productModel');
 let Category=require('./model/categoryModel');
+let Order=require('./model/Orders');
 let server = express();
 server.set("view engine", "ejs");
 server.use(expressLayouts);
@@ -157,6 +158,60 @@ server.get('/delete_cart_item/:id',async(req,res)=>{
   }
   return res.redirect('/login');
 })
+
+
+server.get('/buy_cart_item/:id', async (req, res) => {
+  try {
+    const productId = req.params.id;
+
+    // Validate the ObjectId
+    if (!mongoose.Types.ObjectId.isValid(productId)) {
+      return res.status(400).send("Invalid Product ID");
+    }
+
+    // Find the product
+    let product = await Product.findOne({ _id: productId });
+    if (!product) {
+      return res.status(404).send("Product not found");
+    }
+
+    console.log(product);
+
+    // Prepare order data
+    let data = {
+      title: product.title,
+      price: product.price,
+      description: product.description,
+      email: req.session.user.email,
+    };
+
+    // Create and save new order
+    let newOrder = new Order(data);
+    await newOrder.save();
+
+    // Retrieve current user's orders
+    let currentUserOrders = await Order.find({ email: req.session.user.email });
+    let orderTitles = currentUserOrders.map(order => order.title);
+    let orderDescriptions = currentUserOrders.map(order => order.description);
+
+    // Find ordered products
+    let currentUserOrderedProducts = await Product.find({
+      $and: [
+        { title: { $in: orderTitles } },
+        { description: { $in: orderDescriptions } },
+      ],
+    });
+
+    console.log(currentUserOrderedProducts);
+
+    // Render the orders page
+    res.render('orders', { products: currentUserOrderedProducts });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Server Error");
+  }
+});
+
 
 
 server.listen(5000, () => {
