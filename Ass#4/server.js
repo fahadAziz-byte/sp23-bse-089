@@ -75,6 +75,7 @@ server.get('/shop',async(req,res)=>{
 server.post('/searchProduct',async(req,res)=>{
   let searchQuery=req.body.search;
   let user=req.session.user;
+  let categories=await Category.find();
   console.log(searchQuery);
   if(searchQuery){
     let products=await Product.find({
@@ -84,8 +85,8 @@ server.post('/searchProduct',async(req,res)=>{
     }
     })
     if(products){
-      return res.render('shop',{user,products});}
-    return res.render('shop',{products:[]});
+      return res.render('shop',{user,products,categories});}
+    return res.render('shop',{products:[],categories});
   }
   return res.redirect('/shop');
 })
@@ -114,7 +115,8 @@ server.post('/filterProducts', async (req, res) => {
 
   try {
       let filteredProducts = await Product.find({ $or: query });
-      return res.render('shop', { products: filteredProducts });
+      let categories=await Category.find();
+      return res.render('shop', { products: filteredProducts,categories });
   } catch (error) {
       console.error('Error filtering products:', error);
       return res.status(500).send('An error occurred while filtering products');
@@ -125,6 +127,7 @@ server.post('/filterCategory',async(req,res)=>{
   let categoryName=req.body.name;
   let categories=await Category.find();
   let filteredProducts=await Product.find({category: categoryName});
+
   return res.render('shop', { products: filteredProducts, categories });
 })
 
