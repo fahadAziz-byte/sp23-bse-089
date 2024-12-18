@@ -162,7 +162,7 @@ server.get('/delete_cart_item/:id',auth,async(req,res)=>{
 
 server.get('/order',auth,async(req,res)=>{
   
-  let currentUserOrders = await Order.find({ email: req.session.user.email });
+  let currentUserOrders = await Order.find({ email: req.session.user.email }).sort({ date: -1 });
   res.render('orders', { products: currentUserOrders , user:req.session.user });
 })
 
@@ -172,20 +172,31 @@ server.get('/delete_Order/:id',async(req,res)=>{
   res.redirect('/order');
 })
 
+server.get('/checkOut/:id',async(req,res)=>{
+  let user=req.session.user;
+  let productId=req.params.id;
+  req.session.productId=productId;
+  res.render('addressForm',{user});
+})
 
-server.get('/buy_cart_item/:id', async (req, res) => {
+
+server.post('/buy_cart_item', async (req, res) => {
   try {
-    const productId = req.params.id;
 
-    
-
-    // Find the product
-    let product = await Product.findOne({ _id: productId });
+    let product=await Product.findOne({_id : req.session.productId});
+    let address={};
+    address={
+      fullName: req.body.name,
+      street: req.body.street,
+      city: req.body.city,
+      postalCode: req.body.postalCode,
+    }
 
     //Now , iam removing the cart item that is being bought and transfered to orders
     let cart=req.cookies.cart;
     cart = cart ? cart : [];
-    cart=cart.filter((item)=>item !== productId);
+    cart=cart.filter((item)=>item !== req.session.productId);
+    res.cookie('cart',cart);
     // Prepare order data
     let data = {
       title: product.title,
@@ -193,13 +204,15 @@ server.get('/buy_cart_item/:id', async (req, res) => {
       price: product.price,
       picture:product.picture,
       email: req.session.user.email,
+      address : address,
     };
 
     // Create and save new order
     let newOrder = new Order(data);
     await newOrder.save();
+    req.session.productId=null;
 
-    res.redirect('/cart');
+    res.redirect('/order');
   } catch (err) {
     console.error(err);
     res.status(500).send("Server Error");

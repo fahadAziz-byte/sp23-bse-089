@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delivery Address - Dream House Furniture</title>
+    <style>
+        .top-banner {
+            background-color: #8CC63F;
+            color: white;
+            padding: 10px 0;
+        }
+        .top-banner .container {
+            display: flex;
+            justify-content: space-between;
+        }
+        .main-header {
+            padding: 20px 0;
+        }
+        .main-header .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .logo {
+            width: 200px;
+        }
+        .search-bar {
+            display: flex;
+            max-width: 600px;
+            width: 100%;
+        }
+        .search-bar form {
+            display: flex;
+            width: 100%;
+        }
+        .search-input {
+            flex-grow: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-right: none;
+        }
+        .search-button {
+            padding: 10px 15px;
+            background-color: #8CC63F;
+            color: white;
+            border: none;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        .header-icons a {
+            margin-left: 15px;
+            color: #333;
+            text-decoration: none;
+        }
+        .nav-menu {
+            background-color: #f8f8f8;
+            border-top: 1px solid #e7e7e7;
+            border-bottom: 1px solid #e7e7e7;
+        }
+        .nav-menu ul {
+            display: flex;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        .nav-menu li {
+            padding: 15px 20px;
+        }
+        .nav-menu a {
+            color: #333;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .browse-categories {
+            background-color: #8CC63F;
+            color: white;
+            padding: 15px 20px;
+            cursor: pointer;
+        }
+        #menu {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            background-color: #f8f8f8;
+            border-bottom: 1px solid #e7e7e7;
+        }
+        #menu li {
+            padding: 10px 15px;
+        }
+        #menu a {
+            color: rgb(69, 177, 245);
+            text-decoration: none;
+        }
+        .delivery-form-container {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .delivery-form {
+            background-color: #fff;
+            border: 1px solid #e7e7e7;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .submit-button {
+            background-color: #8CC63F;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 4px;
+        }
+        .submit-button:hover {
+            background-color: #7ab52f;
+        }
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+
+    <main class="delivery-form-container">
+        <h1>Delivery Address</h1>
+        <form class="delivery-form" action="/buy_cart_item" method="post">
+            <div class="form-group">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="street">Street Address:</label>
+                <input type="text" id="street" name="street" required>
+            </div>
+            <div class="form-group">
+                <label for="city">City:</label>
+                <input type="text" id="city" name="city" required>
+            </div>
+            <div class="form-group">
+                <label for="postalCode">Postal Code:</label>
+                <input type="text" id="postalCode" name="postalCode" required>
+            </div>
+            <button type="submit" class="btn btn-success">Submit Delivery Address</button>
+        </form>
+    </main>
+
+</body>
+</html>
+

@@ -172,6 +172,10 @@ server.get('/delete_Order/:id',async(req,res)=>{
   res.redirect('/order');
 })
 
+server.get('/checkOut',(req,res)=>{
+  res.render('')
+})
+
 
 server.get('/buy_cart_item/:id', async (req, res) => {
   try {
