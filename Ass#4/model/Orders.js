@@ -4,6 +4,7 @@ let orderSchema=mongoose.Schema({
     title: String,
     description: String,
     price: Number,
+    picture:String,
     email: String,
 })
 

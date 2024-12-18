@@ -53,6 +53,10 @@ server.post("/register", async (req, res) => {
   return res.redirect("/login");
 });
 
+server.get('/contact-us',(req,res)=>{
+  res.render('contact');
+})
+
 
 
 
@@ -60,20 +64,20 @@ server.get("/about-me", (req, res) => {
   return res.render("Portfolio.ejs");
 });
 
-server.get("/",auth, async(req, res) =>{
+server.get("/", async(req, res) =>{
   let user=req.session.user;
   let products=await Product.find();
   res.render("HomePage.ejs",{ user,products });
 });
 
-server.get('/shop',auth,async(req,res)=>{
+server.get('/shop',async(req,res)=>{
   let user=req.session.user;
   let products=await Product.find();
   let categories=await Category.find();
   res.render("shop.ejs",{ user,products,categories });
 })
 
-server.post('/searchProduct',auth,async(req,res)=>{
+server.post('/searchProduct',async(req,res)=>{
   let searchQuery=req.body.search;
   let user=req.session.user;
   let categories=await Category.find();
@@ -133,14 +137,11 @@ server.post('/filterCategory',async(req,res)=>{
 })
 
 server.get("/cart",auth, async (req, res) => {
-  let user=req.session.user;
-  if(req.session.user){
     let cart = req.cookies.cart;
     cart = cart ? cart : [];
     let products = await Product.find({ _id: { $in: cart } });
+    let user=req.session.user;
     return res.render("cart", { products,user });
-  }
-  return res.redirect('/login');
 });
 server.get("/add-to-cart/:id", (req, res) => {
   let cart = req.cookies.cart;
@@ -151,43 +152,46 @@ server.get("/add-to-cart/:id", (req, res) => {
 });
 
 server.get('/delete_cart_item/:id',auth,async(req,res)=>{
-  if(req.session.user){
       let id=req.params.id;
       let cart=req.cookies.cart;
-      console.log("Cart : "+cart);
       cart = cart ? cart : [];
       cart=cart.filter((item)=>item !== id);
       res.cookie('cart',cart);
       return res.redirect('/cart');
-  }
-  return res.redirect('/login');
 })
 
-server.get('/order',auth,async(req,res))
+server.get('/order',auth,async(req,res)=>{
+  
+  let currentUserOrders = await Order.find({ email: req.session.user.email });
+  res.render('orders', { products: currentUserOrders , user:req.session.user });
+})
+
+server.get('/delete_Order/:id',async(req,res)=>{
+  console.log(req.params.id);
+  await Order.findOneAndDelete({_id:req.params.id})
+  res.redirect('/order');
+})
 
 
 server.get('/buy_cart_item/:id', async (req, res) => {
   try {
     const productId = req.params.id;
 
-    // Validate the ObjectId
-    if (!mongoose.Types.ObjectId.isValid(productId)) {
-      return res.status(400).send("Invalid Product ID");
-    }
+    
 
     // Find the product
     let product = await Product.findOne({ _id: productId });
-    if (!product) {
-      return res.status(404).send("Product not found");
-    }
 
-    console.log(product);
-
+    //Now , iam removing the cart item that is being bought and transfered to orders
+    let cart=req.cookies.cart;
+    cart = cart ? cart : [];
+    cart=cart.filter((item)=>item !== productId);
     // Prepare order data
     let data = {
       title: product.title,
-      price: product.price,
       description: product.description,
+      price: product.price,
+      picture:product.picture,
       email: req.session.user.email,
     };
 
@@ -195,23 +199,7 @@ server.get('/buy_cart_item/:id', async (req, res) => {
     let newOrder = new Order(data);
     await newOrder.save();
 
-    // Retrieve current user's orders
-    let currentUserOrders = await Order.find({ email: req.session.user.email });
-    let orderTitles = currentUserOrders.map(order => order.title);
-    let orderDescriptions = currentUserOrders.map(order => order.description);
-
-    // Find ordered products
-    let currentUserOrderedProducts = await Product.find({
-      $and: [
-        { title: { $in: orderTitles } },
-        { description: { $in: orderDescriptions } },
-      ],
-    });
-
-    console.log(currentUserOrderedProducts);
-
-    // Render the orders page
-    res.render('orders', { products: currentUserOrderedProducts });
+    res.redirect('/cart');
   } catch (err) {
     console.error(err);
     res.status(500).send("Server Error");
