@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dream House Furniture</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    
+
+    <main>
+        <section class="hero-slider">
+            <div class="slide" style="background-image: url('/images/ImageSlider1.jpg'); background-color:khaki;">
+                <div class="slide-content">
+                    <h2>Modern Comfort for Your Home</h2>
+                    <a href="/shop" class="slide-button">Explore Now</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="brand-section">
+            <div class="container">
+                <img src="/images/BenchMark.jpg" alt="Dreamz Logo" class="brand-logo">
+                <h2 class="brand-tagline">Crafting Furnitures since 2003.</h2>
+            </div>
+        </section>
+
+        <section class="featured-categories">
+            <div class="container">
+                <h2>Featured Categories</h2>
+                <div class="category-grid">
+                    <div class="category-item">
+                        <img src="/images/sofas.jpg" alt="Sofas">
+                        <h3>Sofas</h3>
+                    </div>
+                    <div class="category-item">
+                        <img src="/images/chairs.jpg" alt="Chairs">
+                        <h3>Chairs</h3>
+                    </div>
+                    <div class="category-item">
+                        <img src="/images/diningTable.jpg" alt="Tables">
+                        <h3>Tables</h3>
+                    </div>
+                    <div class="category-item">
+                        <img src="/images/bedroom.jpg" alt="Beds">
+                        <h3>Beds</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="featured-products">
+            <div class="container">
+                <h2>Featured Products</h2>
+                <div class="product-grid">
+                    <div class="product-item">
+                        <img src="/images/centerTables.jpg" alt="Cozy Sofa">
+                        <h3>Center table</h3>
+                        <p class="price">Rs. 59999</p>
+                        <a href="/shop">
+                            <button type="button" class="btn btn-success">Check Out</button>
+                        </a>
+                    </div>
+                    <div class="product-item">
+                        <img src="/images/gardenFurniture.jpg" alt="Elegant Chair">
+                        <h3>Elegant Chair</h3>
+                        <p class="price">Rs. 19999</p>
+                        <a href="/shop">
+                            <button type="button" class="btn btn-success">Check Out</button>
+                        </a>
+                    </div>
+                    <div class="product-item">
+                        <img src="/images/officeFurniture.jpg" alt="Modern Table">
+                        <h3>Office Furniture</h3>
+                        <p class="price">Rs. 39499</p>
+                        <a href="/shop">
+                            <button type="button" class="btn btn-success">Check Out</button>
+                        </a>
+                    </div>
+                    <div class="product-item">
+                        <img src="/images/bedroom.jpg" alt="Luxurious Bed">
+                        <h3>Luxurious Bed</h3>
+                        <p class="price">Rs. 79999</p>
+                        <a href="/shop">
+                            <button type="button" class="btn btn-success">Check Out</button>
+                        </a>
+                    </div>
+                    <% if(products){
+                        products.forEach((product)=>{ %>
+                            <div class="product-item">
+                                <img src="<%=product.picture%>" alt="<%=product.title%>">
+                                <h3><%=product.title%></h3>
+                                <p class="price">Rs. <%=product.price%></p>
+                                <a href="/shop">
+                                    <button type="button" class="btn btn-success">Check Out</button>
+                                </a>
+                            </div>
+                        <%})
+                    }%>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    
+</body>
+</html>
