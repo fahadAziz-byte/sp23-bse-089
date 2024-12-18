@@ -18,6 +18,7 @@ const bodyParser = require('body-parser');
 
 server.use(bodyParser.urlencoded({ extended: true }));
 server.use(bodyParser.json());
+const auth=require('./middleware/auth-middleware');
 
 let adminProductsRouter = require("../Ass#4/routes/admin/products.controller");
 server.use('/admin',adminProductsRouter);
@@ -59,20 +60,20 @@ server.get("/about-me", (req, res) => {
   return res.render("Portfolio.ejs");
 });
 
-server.get("/", async(req, res) =>{
+server.get("/",auth, async(req, res) =>{
   let user=req.session.user;
   let products=await Product.find();
   res.render("HomePage.ejs",{ user,products });
 });
 
-server.get('/shop',async(req,res)=>{
+server.get('/shop',auth,async(req,res)=>{
   let user=req.session.user;
   let products=await Product.find();
   let categories=await Category.find();
   res.render("shop.ejs",{ user,products,categories });
 })
 
-server.post('/searchProduct',async(req,res)=>{
+server.post('/searchProduct',auth,async(req,res)=>{
   let searchQuery=req.body.search;
   let user=req.session.user;
   let categories=await Category.find();
@@ -131,7 +132,7 @@ server.post('/filterCategory',async(req,res)=>{
   return res.render('shop', { products: filteredProducts, categories });
 })
 
-server.get("/cart", async (req, res) => {
+server.get("/cart",auth, async (req, res) => {
   let user=req.session.user;
   if(req.session.user){
     let cart = req.cookies.cart;
@@ -149,7 +150,7 @@ server.get("/add-to-cart/:id", (req, res) => {
   return res.redirect("/cart");
 });
 
-server.get('/delete_cart_item/:id',async(req,res)=>{
+server.get('/delete_cart_item/:id',auth,async(req,res)=>{
   if(req.session.user){
       let id=req.params.id;
       let cart=req.cookies.cart;
@@ -161,6 +162,8 @@ server.get('/delete_cart_item/:id',async(req,res)=>{
   }
   return res.redirect('/login');
 })
+
+server.get('/order',auth,async(req,res))
 
 
 server.get('/buy_cart_item/:id', async (req, res) => {
