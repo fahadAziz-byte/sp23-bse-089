@@ -1,9 +1,9 @@
 const express = require("express");
 let router = express.Router();
-let multer = require("multer");
 let Product = require("../Ass#4/model/productModel");
 const Category = require("../Ass#4/model/categoryModel");
 router.use(express.urlencoded({extended:true}))
+let multer = require("multer");
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "./uploads"); // Directory to store files
